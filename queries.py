@@ -1,5 +1,3 @@
-from typing import Dict, List
-
 import pandas as pd
 import streamlit as st
 
@@ -12,7 +10,7 @@ OVERSEAS_DEPARTMENTS = [
     "SAINT-MARTIN"]
 
 @st.cache_resource
-def load_data() -> Dict[str, pd.DataFrameGroupBy]:
+def load_data():
     locations = pd.read_csv("data/locations_data.csv")
     regions = locations[
         ["region","department"]].groupby("region")
@@ -41,7 +39,7 @@ def load_data() -> Dict[str, pd.DataFrameGroupBy]:
         "working_days": working_days,
         "weekends": weekends}
 
-def get_data(s: str, p: str) -> List[pd.DataFrame]:
+def get_data(s, p):
     '''
     Return the pandas dataframes (or None when not enough data)
     containing hourly average air concentrations of pollutant "p" 
@@ -57,7 +55,7 @@ def get_data(s: str, p: str) -> List[pd.DataFrame]:
             result.append(None)
     return result
 
-def get_items(where: str, group: str) -> List[str]:
+def get_items(where, group):
     '''
     Extract the data from the appropriate pandas GroupBy object 
     which are associated to group "group_name".
