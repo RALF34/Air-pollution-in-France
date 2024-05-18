@@ -11,7 +11,7 @@ OVERSEAS_DEPARTMENTS = [
 
 @st.cache_resource
 def load_data():
-    locations = pd.read_csv("data/locations_data.csv")
+    locations = pd.read_csv("data/location_data.csv")
     regions = locations[
         ["region","department"]].groupby("region")
     departments = locations[
